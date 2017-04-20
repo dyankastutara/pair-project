@@ -6,7 +6,9 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     classMethods: {
       associate: function(models) {
-        Tag.belongsTo(models.Question, {foreignKey:'question_id'});
+
+        // associations can be defined here
+        Tag.belongsTo(models.Question,{foreignKey : "question_id"})
       }
     }
   });
