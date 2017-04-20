@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nanyain.com</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <fieldset>
+      <form action="/question/submit" method="post">
+        <table width="50%">
+          <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><select  name="user_id">
+              <% list.forEach((row)=>{%>
+              <option value="<%=row.id%>"><%=row.name%></option>
+              <% }) %>
+            </select></td>
+          </tr>
+          <tr>
+            <td>Question</td>
+            <td>:</td>
+            <td><input type="text" name="question" size="40"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><button type="submit">Submit Question</button></td>
+          </tr>
+        </table>
+      </form>
+    </fieldset>
+  </body>
+</html>

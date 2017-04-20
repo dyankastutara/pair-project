@@ -5,7 +5,24 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p><a href="question/add">Add Question</a></p>
+    <fieldset>
+      <table width="100%">
+        <tr align="left">
+          <th width="5%">No</th>
+          <th width="15%">User</th>
+          <th width="60%">Question</th>
+          <th width="20%">Action</th>
+        </tr>
+        <% let i=1; list.forEach((row)=>{%>
+        <tr>
+          <td><%= i++ %></td>
+          <td><%= row.User.name%></td>
+          <td><%= row.question %></td>
+          <td><a href="#">Answer</a> | <a href="#">View</a> | <a href="/list_question/delete/<%=row.id%>">Delete</a> | <a href="#">Edit</a></td>
+        </tr>
+        <% }) %>
+      </table>
+    </fieldset>
   </body>
 </html>
