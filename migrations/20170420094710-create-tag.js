@@ -11,7 +11,7 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      answer_id: {
+      question_id: {
         type: Sequelize.INTEGER
       },
       createdAt: {
