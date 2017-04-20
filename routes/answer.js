@@ -10,7 +10,7 @@ router.get('/add_answer/:id', (req, res, next)=>{
   })
   .then((query)=>{
     res.render('answer/add_answer',{
-      question : query
+      data : query
     })
   })
 })
