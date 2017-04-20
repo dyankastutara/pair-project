@@ -29,11 +29,11 @@ router.post('/question/submit',(req, res, next)=>{
     user_id : req.body.user_id
   })
   .then(()=>{
-    res.render('tags/tags',{})
+    res.redirect('/',{})
   })
 })
 
-router.get('question/delete/:id',(req,res,next)=>{
+router.get('/question/delete/:id',(req,res,next)=>{
   models.Question.destroy({
     where :{
       id : req.params.id

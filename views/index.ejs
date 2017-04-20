@@ -11,15 +11,15 @@
         <tr align="left">
           <th width="5%">No</th>
           <th width="15%">User</th>
-          <th width="60%">Question</th>
-          <th width="20%">Action</th>
+          <th width="50%">Question</th>
+          <th width="30%">Action</th>
         </tr>
         <% let i=1; list.forEach((row)=>{%>
         <tr>
           <td><%= i++ %></td>
           <td><%= row.User.name%></td>
           <td><%= row.question %></td>
-          <td><a href="#">Answer</a> | <a href="#">View</a> | <a href="/question/delete/<%=row.id%>">Delete</a> | <a href="#">Edit</a></td>
+          <td><a href="/tags/add/<%=row.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=row.id%>">Answer</a> | <a href="#">View</a> | <a href="/question/delete/<%=row.id%>">Delete</a> | <a href="#">Edit</a></td>
         </tr>
         <% }) %>
       </table>
