@@ -29,7 +29,7 @@ router.post('/question/submit',(req, res, next)=>{
     user_id : req.body.user_id
   })
   .then(()=>{
-    res.resend('tags/tags',{})
+    res.render('tags/tags',{})
   })
 })
 
