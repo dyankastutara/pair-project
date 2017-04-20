@@ -15,7 +15,7 @@ router.post('/tags/submit',(req, res, next)=>{
     question_id : req.body.question_id
   })
   .then(()=>{
-    res.render('/tags/tags')
+    res.redirect('/tags/tags')
   })
 })
 module.exports = router

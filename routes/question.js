@@ -33,4 +33,15 @@ router.post('/question/submit',(req, res, next)=>{
   })
 })
 
+router.get('question/delete/:id',(req,res,next)=>{
+  models.Question.destroy({
+    where :{
+      id : req.params.id
+    }
+  })
+  .then(()=>{
+    res.redirect('/')
+  })
+})
+
 module.exports = router;
