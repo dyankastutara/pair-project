@@ -30,9 +30,7 @@ router.post('/question/submit',(req, res, next)=>{
     user_id : req.body.user_id
   })
   .then(()=>{
-
-    res.redirect('/',{})
-
+    res.redirect('/')
   })
 })
 
@@ -42,6 +40,18 @@ router.get('/question/delete/:id',(req,res,next)=>{
       id : req.params.id
     }
   })
+  .then(models.Answer.destroy({
+        where:{
+          question_id : req.params.id
+        }
+      })
+      .then(models.Tag.destroy({
+        where:{
+          question_id : req.params.id
+        }
+      })
+    )
+  )
   .then(()=>{
     res.redirect('/')
   })
@@ -64,7 +74,8 @@ router.get('/question/edit/:id',(req,res,next)=>{
 router.post('/question/update/:id',(req, res, next)=>{
   models.Question.update({
       question: req.body.question,
-      user_id: req.body.user_id
+      user_id: req.body.user_id,
+      updatedAt: new Date().toISOString()
     },{
     where : {
       id : req.params.id
@@ -74,27 +85,4 @@ router.post('/question/update/:id',(req, res, next)=>{
     res.redirect('/');
   });
 })
-
-/*
-
-router.post('/update/:id', function(req, res, next) {
-  db.Todo.update({
-      task: req.body.task,
-      completed: req.body.completed || false,
-      user_id: req.body.user_id
-    },{
-    where : {
-      id : req.params.id
-    }
-  })
-  .then(data => {
-    res.redirect('/todos');
-  })
-  .catch(err => {
-    res.send(err);
-  })
-})
-
-*/
-
 module.exports = router;

@@ -1,0 +1,40 @@
+<%- include ../header.ejs %>
+<div class="card-block">
+
+    <fieldset>
+      <form action="/answer/update/<%= data.id %>" method="post">
+        <table>
+          <tr>
+            <td>User</td>
+            <td>:</td>
+            <td>
+              <input type="text" name="question" value="<%=data.User.name%>">
+              <input type="text" name="user_id" value="<%=data.user_id%>" readonly hidden>
+            </td>
+          </tr>
+          <tr>
+            <td>Question</td>
+            <td>:</td>
+            <td>
+              <input type="text" name="question" value="<%=data.Question.question%>">
+              <input type="text" name="question_id" value="<%=data.question_id%>" readonly hidden>
+            </td>
+          </tr>
+          <tr>
+            <td>Answer</td>
+            <td>:</td>
+            <td><textarea name="answer" rows="8" cols="80"><%= data.answer %></textarea></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><button type="submit">Submit Answer</button></td>
+          </tr>
+          <tr>
+            <td colspan="3"><a href="../../">BACK</a></td>
+          </tr>
+        </table>
+      </form>
+    </fieldset>
+  </div>
+<%- include ../footer.ejs %>

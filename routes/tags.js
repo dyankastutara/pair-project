@@ -6,10 +6,18 @@ router.get('/add/:id',(req, res, next)=>{
   models.Tag.findAll({
     include : [models.Question]
   })
-  .then(()=>{
+  .then((query)=>{
+    models.Question.findAll({
+      where : {
+        id : req.params.id
+      }
+    })
+    .then((queryQuestion)=>{
       res.render('tags/tags',{
-        question_id : req.params.id
+        question_id : req.params.id,
+        data : queryQuestion
       })
+    })
   })
 })
 
@@ -19,7 +27,7 @@ router.post('/added_tag',(req, res, next)=>{
     question_id : req.body.question_id
   })
   .then(()=>{
-    res.redirect('../')
+    res.redirect('add/'+req.body.question_id)
   })
 })
 module.exports = router

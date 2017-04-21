@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nanyain.com</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
+<%- include ../header.ejs %>
     <fieldset>
       <form action="/tags/added_tag" method="post">
-        <table width="50%">
+        <table width="100%">
           <tr>
             <td>ID Question</td>
             <td>:</td>
             <td><input type="text" name="question_id" value="<%= question_id %>" readonly></td>
+          </tr>
+          <tr>
+            <td>Question</td>
+            <td>:</td>
+            <td><input type="text" name="question_id" value="<%= data.question %>" readonly></td>
           </tr>
           <tr>
             <td>Tag Name</td>
@@ -23,8 +22,10 @@
             <td></td>
             <td><button type="submit">+</button></td>
           </tr>
+          <tr>
+            <td colspan="3"><a href="../../">back</a></td>
+          </tr>
         </table>
       </form>
     </fieldset>
-  </body>
-</html>
+<%- include ../footer.ejs %>

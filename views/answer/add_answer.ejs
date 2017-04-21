@@ -1,19 +1,40 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>nanyain.com</title>
-  </head>
-  <body>
+<%- include ../header.ejs %>
+<div class="card-block">
     <fieldset>
-
+      Question: <%= data.User.name %><br>
+      <fieldset>
+        <%= data.question %>
+      </fieldset>
     </fieldset>
-    forEach
     <fieldset>
-      nama
-      jawaban
-
+      <form action="/answer/submit/<%= question_id %>" method="post">
+        <table>
+          <tr>
+            <td>User</td>
+            <td>:</td>
+            <td>
+              <select name="user_id">
+                <% user.forEach((row)=>{ %>
+                  <option value="<%=row.id%>"><%=row.name%></option>
+                <% }) %>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Answer</td>
+            <td>:</td>
+            <td><textarea name="answer" rows="8" cols="80"></textarea></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><button type="submit">Submit Answer</button></td>
+          </tr>
+          <tr>
+            <td colspan="3"><a href="../../">BACK</a></td>
+          </tr>
+        </table>
+      </form>
     </fieldset>
-  })
-  </body>
-</html>
+  </div>
+<%- include ../footer.ejs %>

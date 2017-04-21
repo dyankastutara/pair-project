@@ -1,0 +1,26 @@
+<%- include ../header.ejs %>
+
+<fieldset>
+  <p><b><%=question.User.name%></b> asks :</p>
+  <p><%=question.question%></p>
+  <p>
+    <a href="/tags/add/<%=question.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=question.id%>">Answer</a> | <a href="/question/edit/<%=question.id%>">Edit</a>
+  </p>
+</fieldset>
+<hr>
+<%
+  list.forEach((answer)=>{
+%>
+<fieldset>
+  <p><b><%=answer.User.name%></b> answers :</p>
+  <p><%=answer.answer%>. | <a href="/answer/edit/<%=answer.id%>">Edit</a> | <a href="/answer/delete/<%=answer.id%>">Delete</a></p>
+  <p>
+    <a href="/answer/votes/<%=answer.id%>">Vote</a> <b>+<%=answer.votes%></b>
+  </p>
+</fieldset>
+<hr>
+<%
+  })
+%>
+<a href="../../">BACK</a>
+<%- include ../footer.ejs %>

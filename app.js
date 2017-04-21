@@ -27,7 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/tags', tags)
-
 app.use('/answer', answer)
 
 

@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>nanyain.com</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <p><a href="question/add">Add Question</a></p>
+<%- include header.ejs %>
+  <p><a href="question/add">Add Question</a></p>
     <fieldset>
       <table width="100%">
         <tr align="left">
-          <th width="5%">No</th>
+          <th width="3%">No</th>
           <th width="15%">User</th>
-          <th width="50%">Question</th>
-          <th width="30%">Action</th>
+          <th width="45%">Question</th>
+          <th width="12%">Tags</th>
+          <th width="25%">Action</th>
         </tr>
         <% let i=1; list.forEach((row)=>{%>
         <tr>
           <td><%= i++ %></td>
           <td><%= row.User.name%></td>
           <td><%= row.question %></td>
-
-          <td><a href="/tags/add/<%=row.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=row.id%>">Answer</a> | <a href="#">View</a> | <a href="/question/delete/<%=row.id%>">Delete</a> | <a href="/question/edit/<%=row.id%>">Edit</a></td>
-
+          <td></td>
+          <td><a href="/tags/add/<%=row.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=row.id%>">Answer</a> | <a href="/answer/view_answer/<%=row.id%>">View</a> | <a href="/question/delete/<%=row.id%>" onclick="return confirm('Question : \n<%= row.question %> \nDelete ?')">Delete</a> | <a href="/question/edit/<%=row.id%>">Edit</a></td>
         </tr>
         <% }) %>
       </table>
     </fieldset>
-  </body>
-</html>
+<%- include footer.ejs %>
