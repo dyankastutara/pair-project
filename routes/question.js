@@ -31,7 +31,7 @@ router.post('/question/submit',(req, res, next)=>{
   })
   .then(()=>{
 
-    res.redirect('/',{})
+    res.redirect('/')
 
   })
 })
@@ -61,40 +61,43 @@ router.get('/question/edit/:id',(req,res,next)=>{
   })
 })
 
-router.post('/question/update/:id',(req, res, next)=>{
+router.post('/question/update/:id',(req,res,next)=>{
   models.Question.update({
       question: req.body.question,
-      user_id: req.body.user_id
+      user_id: req.body.user_id,
+      updatedAt: new Date().toISOString()
     },{
     where : {
       id : req.params.id
     }
   })
   .then(data => {
-    res.redirect('/');
+    res.redirect('/question/view/:id');
   });
 })
 
-/*
-
-router.post('/update/:id', function(req, res, next) {
-  db.Todo.update({
-      task: req.body.task,
-      completed: req.body.completed || false,
-      user_id: req.body.user_id
-    },{
+router.get('/question/view/:id',(req,res,next)=>{
+  models.Question.find({
     where : {
       id : req.params.id
-    }
+    },
+    include : [models.User]
   })
-  .then(data => {
-    res.redirect('/todos');
-  })
-  .catch(err => {
-    res.send(err);
+  .then((data)=>{
+    models.Answer.findAll({
+      where : {
+        question_id : req.params.id
+      },
+      order : 'id asc',
+      include : [models.User]
+    })
+    .then((query)=>{
+      res.render('question/view_question', {
+        list: query,
+        question: data
+      });
+    })
   })
 })
-
-*/
 
 module.exports = router;

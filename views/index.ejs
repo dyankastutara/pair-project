@@ -20,7 +20,7 @@
           <td><%= row.User.name%></td>
           <td><%= row.question %></td>
 
-          <td><a href="/tags/add/<%=row.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=row.id%>">Answer</a> | <a href="#">View</a> | <a href="/question/delete/<%=row.id%>">Delete</a> | <a href="#">Edit</a></td>
+          <td><a href="/tags/add/<%=row.id%>">Add Tags</a> | <a href="/answer/add_answer/<%=row.id%>">Answer</a> | <a href="/question/view/<%=row.id%>">View</a> | <a href="/question/delete/<%=row.id%>">Delete</a> | <a href="/question/edit/<%=row.id%>">Edit</a></td>
 
         </tr>
         <% }) %>
