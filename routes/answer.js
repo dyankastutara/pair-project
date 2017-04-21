@@ -15,6 +15,22 @@ router.get('/add_answer/:id', (req, res, next)=>{
   })
 })
 
-
+router.get('/votes/:id', (req, res, next)=>{
+  models.Answer.find({
+    where : {
+      id : req.params.id
+    }
+  })
+  .then((answer)=>{
+    if (answer) {
+      answer.updateAttributes({
+        votes: answer.votes+1
+      })
+      .then(()=>{
+        res.redirect("/question/view/" + answer.question_id);
+      });
+    }
+  })
+})
 
 module.exports = router

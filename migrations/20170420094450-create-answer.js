@@ -14,6 +14,9 @@ module.exports = {
       votes: {
         type: Sequelize.INTEGER
       },
+      down_votes: {
+        type: Sequelize.INTEGER
+      },
       question_id: {
         type: Sequelize.INTEGER
       },
